@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Excel Scanner</string>
+    <string name="capture_qrcode_prompt">Please scan the barcode in the frame</string>
+    <string name="facebook_app_id">App2Excel</string>
+    <string name="sending_data">sending data…</string>
+    <string name="check_connected">Check your internet connection</string>
+</resources>
