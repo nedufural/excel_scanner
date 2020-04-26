@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface ApiService {
     @FormUrlEncoded
-    @POST("AKfycbwXNe0cj6KIbOLuET7HDr9m98lWUTqUv07sKTrp1a3m1DeFLzQx/exec?action=addCode")
+    @POST("AKfycbw6u9GYMPku76o5lyzEScWhhlqjYky9YEzhchZ2aEjbHsG3GhY/exec?action=addCode")
     Call<InsertResponse> enterBarcode(@Field("barcodes") String barcode);
 
 }
