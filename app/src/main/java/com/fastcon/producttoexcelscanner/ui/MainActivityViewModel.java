@@ -13,13 +13,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivityViewModel extends ViewModel {
+class MainActivityViewModel extends ViewModel {
 
-    final MutableLiveData<InsertResponse> inserted =new  MutableLiveData<InsertResponse>();
+    private static MainActivityViewModel mainActivityViewModelInstance = null;
+
+
+    private final MutableLiveData<InsertResponse> inserted =new  MutableLiveData<InsertResponse>();
     final MutableLiveData<InsertResponse> _inserted = inserted;
 
 
-    public  void enterBarcode(String barcode){
+    void enterBarcode(String barcode){
         Call<InsertResponse> call  =
         DataManager.getApiService().enterBarcode(barcode);
         call.enqueue(new Callback<InsertResponse>() {
@@ -31,7 +34,7 @@ public class MainActivityViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<InsertResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<InsertResponse> call, @NotNull Throwable t) {
                 System.out.println("Error"+t.getMessage());
                 t.getMessage();
             }
