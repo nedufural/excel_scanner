@@ -4,4 +4,17 @@
     <string name="facebook_app_id">App2Excel</string>
     <string name="sending_data">sending data…</string>
     <string name="check_connected">Check your internet connection</string>
+    <string name="sheet_name">sheet name</string>
+    <string name="spreadsheet_link">Spreadsheet link</string>
+    <string name="scan">Scan</string>
+    <string name="add_link">Add Link</string>
+    <string name="save">save</string>
+    <string name="barcode_list">See barcode list</string>
+    <string name="saved_link">link and name saved!</string>
+    <string name="error_saving_link">Error saving link! Please try again..</string>
+    <string name="empty_message">Please enter excel sheet link and sheet name</string>
+    <string name="saving_link">Saving data</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="scan_prompt">Scan a barcode</string>
+    <string name="successful_added">"Successfully added "</string>
 </resources>

@@ -1,8 +1,8 @@
-package com.fastcon.producttoexcelscanner.data;
+package com.fastcon.producttoexcelscanner.data.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class InsertResponse {
+public class InsertDataResponse {
     @SerializedName("message")
     String message;
     @SerializedName("date")

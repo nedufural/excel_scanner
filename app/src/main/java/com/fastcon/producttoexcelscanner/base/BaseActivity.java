@@ -12,23 +12,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.FacebookSdk;
 import com.fastcon.producttoexcelscanner.R;
+import com.orhanobut.hawk.Hawk;
 
 import dmax.dialog.SpotsDialog;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    ProgressBar progressBar;
+
     AlertDialog dialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
+
         FacebookSdk.sdkInitialize(getApplicationContext());
+
         dialog = new SpotsDialog.Builder().setContext(this).build();
-        progressBar = findViewById(R.id.progress_bar);
+
+        Hawk.init(this).build();
         initData();
         initEvents();
+
     }
 
     protected abstract int getLayoutID();
@@ -38,18 +43,26 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
+
         dialog.show();
     }
 
     public void hideProgress() {
-        progressBar.setVisibility(View.INVISIBLE);
+
         dialog.hide();
+    }
+
+    public void setDialogMessage(String message){
+        dialog.setMessage(message);
     }
 
     protected abstract void initData();
 
     protected abstract void initEvents();
+
+    protected abstract void initMiscEvents();
+
+
 
 
 }

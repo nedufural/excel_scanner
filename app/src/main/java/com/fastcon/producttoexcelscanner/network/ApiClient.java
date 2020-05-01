@@ -41,11 +41,9 @@ public class ApiClient {
         dispatcher.setMaxRequests(1);
         httpClient.dispatcher(dispatcher);
 
-
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.interceptors().add(interceptor);
-        httpClient.addInterceptor(interceptor);
         return httpClient.build();
     }
 
