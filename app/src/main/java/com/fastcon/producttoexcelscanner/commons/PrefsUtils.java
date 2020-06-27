@@ -1,6 +1,6 @@
 package com.fastcon.producttoexcelscanner.commons;
 
-import com.fastcon.producttoexcelscanner.data.entity.RetrieveDataResponse;
+import com.fastcon.producttoexcelscanner.data.entity.remote.RetrieveDataResponse;
 import com.orhanobut.hawk.Hawk;
 
 import java.util.List;

@@ -55,17 +55,27 @@ dependencies {
     implementation 'com.kaopiz:kprogresshud:1.2.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
+    //fb for app context
     implementation 'com.facebook.android:facebook-android-sdk:5.0.0'
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
 
-
+    // dexter permissions
     implementation 'com.karumi:dexter:6.1.0'
 
-
+    //dialog lib
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
 
+    //hawk shared preference
     implementation "com.orhanobut:hawk:2.0.1"
+    //excel dependencies
     implementation "org.apache.poi:poi:4.1.2"
+    // timber logger lib
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+    //load more library use DiffUtil next time
+    implementation 'com.jcodecraeer:xrecyclerview:1.6.0'
 
 }

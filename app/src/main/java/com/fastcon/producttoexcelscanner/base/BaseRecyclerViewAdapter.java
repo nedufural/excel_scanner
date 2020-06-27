@@ -9,13 +9,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fastcon.producttoexcelscanner.data.entity.remote.RetrieveDataResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewAdapter.BaseViewHolder> {
 
     protected int layout_id;
-    protected List<?> dataList = new ArrayList<>();
+    protected List<RetrieveDataResponse.Item> dataList = new ArrayList<com.fastcon.producttoexcelscanner.data.entity.remote.RetrieveDataResponse.Item>();
     private Context context;
     private View itemView;
 
@@ -39,6 +41,7 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseR
 
     @Override
     public int getItemCount() {
+
         return dataList.size();
     }
 
@@ -50,6 +53,11 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseR
     @Override
     public int getItemViewType(int position) {
         return position;
+    }
+
+    @Override
+    public void setHasStableIds(boolean hasStableIds) {
+        super.setHasStableIds(hasStableIds);
     }
 
     public abstract void onBindViewHold(int position, Object itemView);

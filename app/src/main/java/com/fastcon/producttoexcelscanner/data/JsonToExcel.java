@@ -1,14 +1,14 @@
-package com.fastcon.producttoexcelscanner.data.entity;
+package com.fastcon.producttoexcelscanner.data;
+
+import com.fastcon.producttoexcelscanner.data.entity.remote.RetrieveDataResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 public class JsonToExcel {

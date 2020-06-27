@@ -16,7 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.fastcon.producttoexcelscanner.R;
 import com.fastcon.producttoexcelscanner.base.BaseActivity;
 import com.fastcon.producttoexcelscanner.base.DividerItemDecorator;
-import com.fastcon.producttoexcelscanner.data.entity.JsonToExcel;
+import com.fastcon.producttoexcelscanner.data.entity.local.Products;
+import com.fastcon.producttoexcelscanner.network.local.viewmodel.ProductsViewModel;
 import com.fastcon.producttoexcelscanner.ui.main.adapter.MainActivityAdapter;
 import com.fastcon.producttoexcelscanner.ui.main.view_model.MainActivityViewModel;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -27,22 +28,20 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
 import static com.fastcon.producttoexcelscanner.commons.PrefsUtils.getJson;
-import static com.fastcon.producttoexcelscanner.commons.PrefsUtils.setJson;
-import static com.fastcon.producttoexcelscanner.data.entity.JsonToExcel.jsonToExcel;
+import static com.fastcon.producttoexcelscanner.data.JsonToExcel.jsonToExcel;
 
 public class MainActivity extends BaseActivity implements MainActivityContract.MainActivityContractSub {
 
     MainActivityViewModel mainActivityViewModel;
+    ProductsViewModel productsViewModel;
     Boolean isConnected;
     Button listButton, scan;
     RecyclerView productList;
+    MainActivityAdapter adapter;
 
     @Override
     protected int getLayoutID() {
@@ -53,6 +52,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.M
     protected void initData() {
         isConnected = MainActivityContract.getInstance().isNetworkAvailable(this);
         mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+        productsViewModel = ViewModelProviders.of(this).get(ProductsViewModel.class);
         setDialogMessage(getString(R.string.please_wait));
         listButton = findViewById(R.id.list_button);
         productList = findViewById(R.id.product_list);
@@ -81,23 +81,36 @@ public class MainActivity extends BaseActivity implements MainActivityContract.M
 
     @Override
     protected void initMiscEvents() {
-        listButton.setOnClickListener(v -> {
-            showProgress();
-
+        showProgress();
+        if (isConnected) {
             mainActivityViewModel.getProductList();
             mainActivityViewModel._retrieve.observe(this, items -> {
 
-                MainActivityAdapter adapter = new MainActivityAdapter(this, items);
-                LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+                adapter = new MainActivityAdapter(this, items);
+                for (int i = 0; i < items.size(); i++) {
+                    Products products = new Products(items.get(i).getBarcode(),
+                            items.get(i).getProductName(),
+                            items.get(i).getDescription(), items.get(i).getVolume());
+                    productsViewModel.insert(products);
 
+                }
+
+            });
+        } else {
+            productsViewModel.getAllProducts().observe(this, products -> {
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
                 productList.setLayoutManager(layoutManager);
                 DividerItemDecorator dividerItemDecoration = new
                         DividerItemDecorator(ContextCompat.getDrawable(this, R.drawable.decoration_line));
                 productList.addItemDecoration(dividerItemDecoration);
                 productList.setAdapter(adapter);
+
                 hideProgress();
             });
-        });
+        }
+
+
     }
 
 

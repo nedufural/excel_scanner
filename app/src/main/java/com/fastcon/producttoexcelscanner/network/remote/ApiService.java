@@ -1,7 +1,7 @@
-package com.fastcon.producttoexcelscanner.network;
+package com.fastcon.producttoexcelscanner.network.remote;
 
-import com.fastcon.producttoexcelscanner.data.entity.InsertDataResponse;
-import com.fastcon.producttoexcelscanner.data.entity.RetrieveDataResponse;
+import com.fastcon.producttoexcelscanner.data.entity.remote.InsertDataResponse;
+import com.fastcon.producttoexcelscanner.data.entity.remote.RetrieveDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

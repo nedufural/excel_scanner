@@ -1,4 +1,4 @@
-package com.fastcon.producttoexcelscanner.data.entity;
+package com.fastcon.producttoexcelscanner.data.entity.remote;
 
 import com.google.gson.annotations.SerializedName;
 

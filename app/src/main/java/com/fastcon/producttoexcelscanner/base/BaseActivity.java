@@ -26,11 +26,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-
         dialog = new SpotsDialog.Builder().setContext(this).build();
 
-        Hawk.init(this).build();
         initData();
         initEvents();
 

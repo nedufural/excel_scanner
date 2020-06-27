@@ -1,4 +1,4 @@
-package com.fastcon.producttoexcelscanner.network;
+package com.fastcon.producttoexcelscanner.network.remote;
 
 import android.content.Context;
 

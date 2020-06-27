@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.fastcon.producttoexcelscanner.commons.PrefsUtils;
-import com.fastcon.producttoexcelscanner.data.entity.InsertDataResponse;
-import com.fastcon.producttoexcelscanner.data.entity.JsonToExcel;
-import com.fastcon.producttoexcelscanner.data.entity.RetrieveDataResponse;
-import com.fastcon.producttoexcelscanner.network.DataManager;
+import com.fastcon.producttoexcelscanner.data.entity.remote.InsertDataResponse;
+import com.fastcon.producttoexcelscanner.data.entity.remote.RetrieveDataResponse;
+import com.fastcon.producttoexcelscanner.network.remote.DataManager;
 
 import org.jetbrains.annotations.NotNull;
 
